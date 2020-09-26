@@ -1,0 +1,14 @@
+<div *ngFor="let content of pdf.content; let c = index">
+	<span *ngIf="content.style==='grade'" #GradeSpan id="GradeSpan" (ngModel)="content.text" fxLayoutAlign="right stretch">{{content.text}}</span>
+	<input *ngIf="content.style==='refs'" #studentname id="studentname" type="text" [(ngModel)]="content.text" (focus)="studentname.select()" placeholder="Naam" autofocus />
+	<h1 *ngIf="content.style==='header'">{{content.text}}</h1>
+	<div *ngIf="content.table" fxLayout="column" class="rubric_container">
+		<div *ngFor="let row of content.table.body; let i = index" fxLayout="row" fxFlex="*" fxLayoutAlign="center stretch" [attr.rowvalue]="0">
+			<div *ngFor="let cell of (row | hasContent); let j = index" [ngClass]="cell.style + ' rubric_cell'" [ngStyle]="{'background-color': cell.fillColor?cell.fillColor:'white'}" [fxFlex]="CellFlex(cell)" (click)="(cell.style!=='points'&&cell.style!=='subject')?SelectCell(c,i,j):''">{{cell.text}}</div>
+		</div>
+	</div>
+	<p *ngIf="content.style==='note'" class='note'>{{content.text}}</p>
+</div>
+<button (click)="PdfOpen()">PDF Open</button>
+<button (click)="PdfPrint()">PDF Print</button>
+<button (click)="PdfDownload()">PDF Download</button>

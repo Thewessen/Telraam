@@ -1,0 +1,45 @@
+<div #row_container class="row" [ngStyle]="{
+	'height':height+'%',
+	'background-repeat':'repeat-x',
+	'background-position':'left center'
+	}">
+	<svg height="100%" width="100%">
+		<svg:defs>
+			<svg:filter id="glowing" height="100%" width="100%" filterUnits="userSpaceOnUse">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="50" result="coloredBlur"/>
+				<feOffset dx="2" dy="2" result="offsetblur" />
+				<feMerge>
+				<feMergeNode in="coloredBlur"/>
+				<feMergeNode in="SourceGraphic"/>
+				</feMerge>
+			</svg:filter>
+		</svg:defs>
+	  <svg:line 
+		  [attr.x1]="0" 
+		  [attr.y1]="ContainerRef().offsetHeight/2" 
+		  x2="100%" 
+		  [attr.y2]="ContainerRef().offsetHeight/2" 
+		  style="stroke:rgb(155,90,37);
+					stroke-width:2%" 
+	  />
+	</svg>
+	<telraam-ball #ball 
+		*ngFor="let ball of balls; let i = index" 
+		[ballcolor]="ballcolors[row]" 
+		(click)="changeValue(i)" 
+		[ngStyle]="{
+			'left':getPosition(i)==='left'?0:100-service.getNumberSystem()*(width+0.2)+'%',
+			'width':width+'%',
+			'transition':calculateTransitionTime(i)}" 
+		(panright)="panRight(i)" 
+		(panleft)="panLeft(i)" 
+		(panend)="panEnd()">
+	</telraam-ball>
+	<span class="rowvalue" 
+		*ngIf="service.showRowValue" 
+		[ngStyle]="{
+			'opacity':value>service.getNumberSystem()/2?1:2/(service.getNumberSystem()+2)*(value+1)
+			}">
+	{{value}}
+	</span>
+</div>

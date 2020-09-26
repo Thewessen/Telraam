@@ -1,0 +1,19 @@
+<div (clickOutside)="viewsettings=false">
+<img id="telraamsettings" class="settings" src="assets/telraamimages/settings.png" (click)="toggleViewSettings()" />
+<div id="settings_container" class="settings" *ngIf="viewsettings" [@settings]="viewsettings">
+	<strong>Number system (base):</strong>
+	<input #numbersystem  type="number" min='0' max='36' [value]="service.getNumberSystem()" (keyup.enter)="service.changeNumberSystem(numbersystem.value)" (blur)="service.changeNumberSystem(numbersystem.value)"/> (min: 2, max: 36)<br>
+	<strong>Number of rows:</strong>
+	<input #rowcount type="number" min='2' [max]='service.getMaxRows()' [value]="service.getRows()" (keyup.enter)="service.changeRowCount(rowcount.value)" (blur)="service.changeRowCount(rowcount.value)" /> (min: 1, max: {{service.getMaxRows()}})<br>
+	<strong>Options:</strong><br>
+	<input #showRowValue type="checkbox" name="showRowValue" [(ngModel)]="service.showRowValue" /> Show row value.<br>
+	<input #autoExceed type="checkbox" name="autoExceed" [(ngModel)]="service.autoExceed" /> Automatic exceed base filling new row.<br>
+	<input #autoAddRow type="checkbox" name="autoAddRow" [(ngModel)]="service.autoAddRow" /> Automatic add row when exceeding last row.<br>
+	<hr />
+	<h3>History</h3>
+	<div class="historycontainer">
+	<div class="telraamhistitem" *ngFor="let histItem of hist.telraamhistory, trackBy: index" (click)="service.setBoardState(histItem)">
+	</div>
+	</div>
+</div>
+</div>

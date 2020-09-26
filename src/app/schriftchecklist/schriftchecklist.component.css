@@ -1,0 +1,47 @@
+header {
+	margin: 20px 0;
+	text-align: left;
+	font-size: 1.5em;
+	line-height: 2em;
+}
+input {
+	font-size: 1em;
+}
+h1 {
+	font-family: fantasy;
+}
+.rubric_container {
+	margin: 10px 0 10px 0;
+	-webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
+	font-size: 1.1em;
+}
+.rubric_cell {
+	border: 1px solid #212121;
+	padding: 10px;
+	font-family: sans-serif;
+	text-align: left;
+}
+.subject, .points {
+	font-weight: bold;
+	font-family: Calibri;
+}
+.subject {
+	text-align: right;
+	background: #eaeaea;
+}
+.points {
+	text-align: center;
+	background: grey;
+}
+.note {
+	text-align: center;
+	font-size: 1em;
+}
+.selected {
+	background: yellow;
+}
+#GradeSpan {
+	font-size: 4em;
+}

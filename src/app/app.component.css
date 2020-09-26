@@ -1,0 +1,8 @@
+div.fullpage {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background-image: url('https://www.topashop.nl/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/0/3/7532_032002_Schuimfolie-vel_0.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}

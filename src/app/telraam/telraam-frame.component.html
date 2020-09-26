@@ -1,0 +1,10 @@
+<div class="container">
+	<div id="left_column" class="column left" [ngStyle]="{'background': 'url(assets/telraamimages/left_column.png)'}"></div>
+	<div #rowContainer class="rowcontainer">
+		<telraam-row *ngFor="let rows of row_count; let i = index" [row]="i" [height]="row_height"></telraam-row>
+		<span class="totalvalue">{{totalValue}}</span>
+	</div>
+	<div id="right_column" class="column right" [ngStyle]="{'background': 'url(assets/telraamimages/right_column.png)'}">
+	</div>
+	<telraam-settings></telraam-settings>
+</div>
